@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "typecheck": "tsc -p packages/sdk/tsconfig.json --noEmit && tsc -p packages/core/tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/bun": "^1.2.0"
+  }
+}

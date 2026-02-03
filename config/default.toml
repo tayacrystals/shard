@@ -1,0 +1,28 @@
+# Shard — Default Configuration
+# Copy this file and customize for your deployment.
+
+# [plugins."@shard/discord"]
+# token = "${DISCORD_TOKEN}"
+# guilds = ["your-guild-id"]
+
+# [plugins."@shard/openai"]
+# apiKey = "${OPENAI_API_KEY}"
+# defaultModel = "gpt-4o"
+
+# [plugins."@shard/anthropic"]
+# apiKey = "${ANTHROPIC_API_KEY}"
+# defaultModel = "claude-sonnet-4-20250514"
+
+[agents]
+# maxTurns = 10
+# defaultModel = "gpt-4o"
+# strategy = "single"
+
+[memory]
+# provider = "surrealdb"
+# url = "ws://localhost:8000/rpc"
+# namespace = "shard"
+# database = "main"
+
+[runtime]
+# logLevel = "info"
