@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,14 +25,12 @@ jobs:
 
       - name: Build packages
         run: |
-          bun --cwd packages/sdk run build
-          bun --cwd packages/core run build
-          bun --cwd packages/model-openaigeneric run build
+          bun --cwd=./packages/sdk run build
+          bun --cwd=./packages/core run build
+          bun --cwd=./packages/model-openaigeneric run build
 
       - name: Publish packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          bun --cwd=./packages/sdk publish
-          bun --cwd=./packages/core publish
-          bun --cwd=./packages/model-openaigeneric publish
+          bun --cwd=./packages/sdk publish --provenance
+          bun --cwd=./packages/core publish --provenance
+          bun --cwd=./packages/model-openaigeneric publish --provenance
