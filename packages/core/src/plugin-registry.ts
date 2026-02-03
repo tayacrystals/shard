@@ -8,14 +8,18 @@ import type {
   Logger,
 } from "@tayacrystals/shard-sdk";
 import { createLogger } from "./logger";
+import { createRequire } from "node:module";
+import { pathToFileURL } from "node:url";
 
 export class PluginRegistry {
   private plugins = new Map<string, Plugin>();
   private initialized = false;
   private log: Logger;
+  private modulePaths?: string[];
 
-  constructor(private config: ConfigManager) {
+  constructor(private config: ConfigManager, options: { modulePaths?: string[] } = {}) {
     this.log = createLogger("plugin-registry");
+    this.modulePaths = options.modulePaths;
   }
 
   async loadAll(): Promise<void> {
@@ -23,7 +27,7 @@ export class PluginRegistry {
 
     for (const packageName of Object.keys(pluginsConfig)) {
       try {
-        const mod = await import(packageName);
+        const mod = await this.importPlugin(packageName);
         const basePlugin: Plugin = mod.default ?? mod;
 
         if (!this.validatePlugin(basePlugin)) {
@@ -62,6 +66,16 @@ export class PluginRegistry {
         this.log.error(`Failed to load plugin "${packageName}":`, err);
       }
     }
+  }
+
+  private async importPlugin(packageName: string): Promise<unknown> {
+    if (!this.modulePaths || this.modulePaths.length === 0) {
+      return import(packageName);
+    }
+
+    const require = createRequire(import.meta.url);
+    const resolved = require.resolve(packageName, { paths: this.modulePaths });
+    return import(pathToFileURL(resolved).href);
   }
 
   private createPluginInstance(basePlugin: Plugin, instanceId: string): Plugin {

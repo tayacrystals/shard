@@ -8,6 +8,7 @@ import type {
   SearchResult,
 } from "@tayacrystals/shard-sdk";
 import { Config } from "./config";
+import { dirname, join } from "node:path";
 import { createLogger } from "./logger";
 import { TypedEventBus } from "./event-bus";
 import { PackageManager } from "./package-manager";
@@ -66,6 +67,9 @@ export class Runtime {
     this.config = await Config.fromFile(configPath);
     this.log.info(`Config loaded from ${configPath}`);
 
+    const configDir = dirname(configPath);
+    const modulesDir = join(configDir, "node_modules");
+
     // Event bus
     this.events = new TypedEventBus();
 
@@ -74,13 +78,25 @@ export class Runtime {
 
     // Package manager — sync plugins
     this.packageManager = new PackageManager(this.config);
-    const syncResult = await this.packageManager.sync();
+    const autoUpdate = this.config.get<boolean>("runtime.pluginAutoUpdate", false);
+    const updateIntervalHours = this.config.get<number>("runtime.pluginUpdateIntervalHours", 24);
+    const statePath = join(configDir, "plugin-update.json");
+    const syncResult = await this.packageManager.sync({
+      autoUpdate,
+      updateIntervalHours,
+      statePath,
+      installDir: configDir,
+      modulePaths: [modulesDir],
+    });
     if (syncResult.installed.length > 0) {
       this.log.info(`Installed ${syncResult.installed.length} new package(s)`);
     }
+    if (syncResult.updated.length > 0) {
+      this.log.info(`Updated ${syncResult.updated.length} plugin package(s)`);
+    }
 
     // Plugin registry
-    this.registry = new PluginRegistry(this.config);
+    this.registry = new PluginRegistry(this.config, { modulePaths: [modulesDir] });
     await this.registry.loadAll();
 
     const context: PluginContext = {

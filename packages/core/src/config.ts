@@ -49,6 +49,8 @@ const DEFAULT_CONFIG = `# Shard — Configuration
 
 [runtime]
 # logLevel = "info"
+# pluginAutoUpdate = false
+# pluginUpdateIntervalHours = 24
 `;
 
 function getDefaultConfigDir(): string {

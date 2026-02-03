@@ -24,3 +24,7 @@ bunx @tayacrystals/shard
 
 - Written in bun with TypeScript
 - Modular architecture for easy extension and customization
+
+## Versioning
+
+This project uses semantic versioning. Each package has its own version number.
