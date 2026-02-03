@@ -37,8 +37,6 @@ jobs:
           bun --cwd=./packages/model-openaigeneric run build
 
       - name: Publish packages
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm publish --workspace packages/sdk --provenance --access public
           npm publish --workspace packages/core --provenance --access public
