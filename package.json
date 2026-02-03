@@ -3,7 +3,7 @@
   "type": "module",
   "workspaces": ["packages/*"],
   "scripts": {
-    "typecheck": "tsc -p packages/sdk/tsconfig.json --noEmit && tsc -p packages/core/tsconfig.json --noEmit"
+    "typecheck": "tsc -p packages/sdk/tsconfig.json --noEmit && tsc -p packages/core/tsconfig.json --noEmit && tsc -p packages/model-openaigeneric/tsconfig.json --noEmit"
   },
   "devDependencies": {
     "typescript": "^5.7.0",

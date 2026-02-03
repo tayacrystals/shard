@@ -17,6 +17,7 @@ export interface Plugin {
   readonly version: string;
   readonly type: PluginType;
   readonly dependencies?: string[];
+  readonly instanceId?: string;
 
   init(context: PluginContext): Promise<void>;
   destroy(): Promise<void>;

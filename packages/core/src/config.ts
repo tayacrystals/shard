@@ -19,6 +19,23 @@ const DEFAULT_CONFIG = `# Shard — Configuration
 # apiKey = "\${ANTHROPIC_API_KEY}"
 # defaultModel = "claude-sonnet-4-20250514"
 
+# [plugins."@shard/model-openaigeneric"]
+# apiKey = "\${OPENAI_API_KEY}"
+# baseUrl = "https://api.openai.com/v1"
+# defaultModel = "gpt-4o"
+#
+# # Or use multiple instances:
+# # [[plugins."@shard/model-openaigeneric".instances]]
+# # instanceId = "openai"
+# # apiKey = "\${OPENAI_API_KEY}"
+# # baseUrl = "https://api.openai.com/v1"
+# # defaultModel = "gpt-4o"
+# #
+# # [[plugins."@shard/model-openaigeneric".instances]]
+# # instanceId = "local"
+# # baseUrl = "http://localhost:8000/v1"
+# # defaultModel = "llama2"
+
 [agents]
 # maxTurns = 10
 # defaultModel = "gpt-4o"

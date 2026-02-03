@@ -24,19 +24,52 @@ export class PluginRegistry {
     for (const packageName of Object.keys(pluginsConfig)) {
       try {
         const mod = await import(packageName);
-        const plugin: Plugin = mod.default ?? mod;
+        const basePlugin: Plugin = mod.default ?? mod;
 
-        if (!this.validatePlugin(plugin)) {
+        if (!this.validatePlugin(basePlugin)) {
           this.log.error(`Invalid plugin contract: ${packageName}`);
           continue;
         }
 
-        this.plugins.set(plugin.name, plugin);
-        this.log.info(`Loaded plugin: ${plugin.name} (${plugin.type}) v${plugin.version}`);
+        // Check if config has instances array
+        const pluginConfig = pluginsConfig[packageName];
+        if (
+          pluginConfig !== null &&
+          typeof pluginConfig === "object" &&
+          Array.isArray((pluginConfig as { instances?: unknown }).instances)
+        ) {
+          const instances = (pluginConfig as { instances: Record<string, unknown>[] }).instances;
+          for (const instanceConfig of instances) {
+            if (
+              instanceConfig !== null &&
+              typeof instanceConfig === "object" &&
+              typeof (instanceConfig as { instanceId?: unknown }).instanceId === "string"
+            ) {
+              const instanceId = (instanceConfig as { instanceId: string }).instanceId;
+              const plugin = this.createPluginInstance(basePlugin, instanceId);
+              this.plugins.set(plugin.name, plugin);
+              this.log.info(
+                `Loaded plugin: ${plugin.name}#${instanceId} (${plugin.type}) v${plugin.version}`
+              );
+            }
+          }
+        } else {
+          // Single instance mode (default)
+          this.plugins.set(basePlugin.name, basePlugin);
+          this.log.info(`Loaded plugin: ${basePlugin.name} (${basePlugin.type}) v${basePlugin.version}`);
+        }
       } catch (err) {
         this.log.error(`Failed to load plugin "${packageName}":`, err);
       }
     }
+  }
+
+  private createPluginInstance(basePlugin: Plugin, instanceId: string): Plugin {
+    return {
+      ...basePlugin,
+      name: `${basePlugin.name}#${instanceId}`,
+      instanceId,
+    };
   }
 
   async initAll(context: PluginContext): Promise<void> {
