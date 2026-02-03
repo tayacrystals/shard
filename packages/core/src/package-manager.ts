@@ -1,4 +1,4 @@
-import type { ConfigManager, Logger } from "@shard/sdk";
+import type { ConfigManager, Logger } from "@tayacrystals/shard-sdk";
 import { createLogger } from "./logger";
 
 export interface SyncResult {

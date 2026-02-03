@@ -1,5 +1,5 @@
 import { createConsola } from "consola";
-import type { Logger, LogLevel } from "@shard/sdk";
+import type { Logger, LogLevel } from "@tayacrystals/shard-sdk";
 
 const consola = createConsola({});
 

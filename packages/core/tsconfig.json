@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@shard/sdk": ["../sdk/src/index.ts"]
+      "@tayacrystals/shard-sdk": ["packages/sdk/src/index.ts"]
     }
   },
   "include": ["src"]

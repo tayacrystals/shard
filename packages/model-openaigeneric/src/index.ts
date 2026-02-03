@@ -9,7 +9,7 @@ import type {
   ToolCall,
   ToolDefinition,
   TokenUsage,
-} from "@shard/sdk";
+} from "@tayacrystals/shard-sdk";
 
 type ModelInfoConfig = {
   id: string;
@@ -93,7 +93,7 @@ type OpenAIChatCompletionChunk = {
 const DEFAULT_BASE_URL = "https://api.openai.com/v1";
 
 class OpenAIGenericModel implements ModelProvider {
-  readonly name = "@shard/model-openaigeneric";
+  readonly name = "@tayacrystals/shard-model-openaigeneric";
   readonly version = "0.1.0";
   readonly type = "model" as const;
 
@@ -104,7 +104,7 @@ class OpenAIGenericModel implements ModelProvider {
     this.logger = context.logger;
     this.config =
       context.config.get<OpenAIGenericConfig>(
-        'plugins."@shard/model-openaigeneric"'
+        'plugins."@tayacrystals/shard-model-openaigeneric"'
       ) ?? {};
   }
 

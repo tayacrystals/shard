@@ -3,7 +3,15 @@
   "type": "module",
   "workspaces": ["packages/*"],
   "scripts": {
-    "typecheck": "tsc -p packages/sdk/tsconfig.json --noEmit && tsc -p packages/core/tsconfig.json --noEmit && tsc -p packages/model-openaigeneric/tsconfig.json --noEmit"
+    "typecheck": "tsc -p packages/sdk/tsconfig.json --noEmit && tsc -p packages/core/tsconfig.json --noEmit && tsc -p packages/model-openaigeneric/tsconfig.json --noEmit",
+    "publish": "bun run publish:packages",
+    "publish:packages": "bun --cwd packages/sdk publish --registry https://npm.pkg.github.com && bun --cwd packages/core publish --registry https://npm.pkg.github.com && bun --cwd packages/model-openaigeneric publish --registry https://npm.pkg.github.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "ci": {
+    "publish": "bun run publish"
   },
   "devDependencies": {
     "typescript": "^5.7.0",

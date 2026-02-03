@@ -6,7 +6,7 @@ import type {
   Tool,
   ConfigManager,
   Logger,
-} from "@shard/sdk";
+} from "@tayacrystals/shard-sdk";
 import { createLogger } from "./logger";
 
 export class PluginRegistry {

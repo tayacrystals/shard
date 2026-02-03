@@ -1,4 +1,4 @@
-import type { EventBus, EventMap, EventHandler } from "@shard/sdk";
+import type { EventBus, EventMap, EventHandler } from "@tayacrystals/shard-sdk";
 import { createLogger } from "./logger";
 
 type AnyHandler = EventHandler<unknown>;

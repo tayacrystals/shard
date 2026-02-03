@@ -6,7 +6,7 @@ import type {
   Fact,
   SearchOptions,
   SearchResult,
-} from "@shard/sdk";
+} from "@tayacrystals/shard-sdk";
 import { Config } from "./config";
 import { createLogger } from "./logger";
 import { TypedEventBus } from "./event-bus";

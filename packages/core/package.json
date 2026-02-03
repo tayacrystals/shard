@@ -1,7 +1,10 @@
 {
-  "name": "@shard/core",
+  "name": "@tayacrystals/shard",
   "version": "0.1.0",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "bun": "./src/index.ts",
@@ -14,7 +17,7 @@
   },
   "files": ["dist", "src"],
   "dependencies": {
-    "@shard/sdk": "workspace:*",
+    "@tayacrystals/shard-sdk": "workspace:*",
     "smol-toml": "^1.3.0",
     "consola": "^3.4.0"
   },

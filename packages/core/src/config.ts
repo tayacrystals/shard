@@ -2,7 +2,7 @@ import { parse } from "smol-toml";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
-import type { ConfigManager } from "@shard/sdk";
+import type { ConfigManager } from "@tayacrystals/shard-sdk";
 
 const DEFAULT_CONFIG = `# Shard — Configuration
 # See https://github.com/shard-ai/shard for documentation.
@@ -19,19 +19,19 @@ const DEFAULT_CONFIG = `# Shard — Configuration
 # apiKey = "\${ANTHROPIC_API_KEY}"
 # defaultModel = "claude-sonnet-4-20250514"
 
-# [plugins."@shard/model-openaigeneric"]
+# [plugins."@tayacrystals/shard-model-openaigeneric"]
 # apiKey = "\${OPENAI_API_KEY}"
 # baseUrl = "https://api.openai.com/v1"
 # defaultModel = "gpt-4o"
 #
 # # Or use multiple instances:
-# # [[plugins."@shard/model-openaigeneric".instances]]
+# # [[plugins."@tayacrystals/shard-model-openaigeneric".instances]]
 # # instanceId = "openai"
 # # apiKey = "\${OPENAI_API_KEY}"
 # # baseUrl = "https://api.openai.com/v1"
 # # defaultModel = "gpt-4o"
 # #
-# # [[plugins."@shard/model-openaigeneric".instances]]
+# # [[plugins."@tayacrystals/shard-model-openaigeneric".instances]]
 # # instanceId = "local"
 # # baseUrl = "http://localhost:8000/v1"
 # # defaultModel = "llama2"

@@ -1,7 +1,10 @@
 {
-  "name": "@shard/sdk",
+  "name": "@tayacrystals/shard-sdk",
   "version": "0.1.0",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "bun": "./src/index.ts",

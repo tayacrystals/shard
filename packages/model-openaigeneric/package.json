@@ -1,7 +1,10 @@
 {
-  "name": "@shard/model-openaigeneric",
+  "name": "@tayacrystals/shard-model-openaigeneric",
   "version": "0.1.0",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "bun": "./src/index.ts",
@@ -11,7 +14,7 @@
   },
   "files": ["dist", "src"],
   "dependencies": {
-    "@shard/sdk": "workspace:*"
+    "@tayacrystals/shard-sdk": "workspace:*"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
