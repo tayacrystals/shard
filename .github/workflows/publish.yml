@@ -28,14 +28,11 @@ jobs:
       - name: Setup Node.js for npm
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: bun install
-
-      - name: Verify npm version
-        run: npm --version
 
       - name: Build packages
         run: |
