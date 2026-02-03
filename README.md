@@ -4,6 +4,12 @@ aka Taya's AI tool
 
 A daemon for running AI agents with tool capabilities.
 
+## Quick Start
+
+Run the tool with:
+
+bunx @tayacrystals/shard
+
 ## Features
 
 - Multiple model provider support (OpenAI, Ollama, etc)

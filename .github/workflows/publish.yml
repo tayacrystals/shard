@@ -32,6 +32,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          bun --cwd packages/sdk publish
-          bun --cwd packages/core publish
-          bun --cwd packages/model-openaigeneric publish
+          bun --cwd=./packages/sdk publish
+          bun --cwd=./packages/core publish
+          bun --cwd=./packages/model-openaigeneric publish
