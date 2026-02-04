@@ -1,5 +1,12 @@
 # @tayacrystals/shard-storage-files
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [f45aa5d]
+  - @tayacrystals/shard-sdk@0.1.3
+
 ## 0.1.1
 
 ### Patch Changes
