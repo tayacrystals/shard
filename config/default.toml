@@ -1,6 +1,12 @@
 # Shard — Default Configuration
 # Copy this file and customize for your deployment.
 
+# [plugins."@tayacrystals/shard-channel-telegram"]
+# token = "${TELEGRAM_BOT_TOKEN}"
+# pollingIntervalMs = 1000
+# allowedChatIds = []
+# parseMode = "MarkdownV2"
+
 # [plugins."@shard/discord"]
 # token = "${DISCORD_TOKEN}"
 # guilds = ["your-guild-id"]
