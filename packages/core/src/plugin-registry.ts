@@ -27,8 +27,8 @@ export class PluginRegistry {
 
     for (const packageName of Object.keys(pluginsConfig)) {
       try {
-        const mod = await this.importPlugin(packageName);
-        const basePlugin: Plugin = mod.default ?? mod;
+        const mod = await this.importPlugin(packageName) as Record<string, unknown>;
+        const basePlugin: Plugin = (mod.default ?? mod) as Plugin;
 
         if (!this.validatePlugin(basePlugin)) {
           this.log.error(`Invalid plugin contract: ${packageName}`);

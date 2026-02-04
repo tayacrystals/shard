@@ -5,6 +5,9 @@ export { PackageManager } from "./package-manager";
 export type { SyncResult } from "./package-manager";
 export { PluginRegistry } from "./plugin-registry";
 export { Runtime } from "./runtime";
+export { AgentLoop } from "./agent/loop";
+export { ToolExecutor } from "./agent/tool-executor";
+export { MessageRouter } from "./agent/router";
 
 if (import.meta.main) {
   const { Runtime: ShardRuntime } = await import("./runtime");
