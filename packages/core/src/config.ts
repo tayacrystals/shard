@@ -5,19 +5,11 @@ import { join, dirname } from "node:path";
 import type { ConfigManager } from "@tayacrystals/shard-sdk";
 
 const DEFAULT_CONFIG = `# Shard — Configuration
-# See https://github.com/shard-ai/shard for documentation.
+# See https://github.com/tayacrystals/shard for documentation.
 
-# [plugins."@shard/discord"]
-# token = "\${DISCORD_TOKEN}"
-# guilds = ["your-guild-id"]
-
-# [plugins."@shard/openai"]
-# apiKey = "\${OPENAI_API_KEY}"
-# defaultModel = "gpt-4o"
-
-# [plugins."@shard/anthropic"]
-# apiKey = "\${ANTHROPIC_API_KEY}"
-# defaultModel = "claude-sonnet-4-20250514"
+# [plugins."@tayacrystals/shard-channel-telegram"]
+# token = "\${TELEGRAM_BOT_TOKEN}"
+# allowed_users = ["123456789", "987654321"]
 
 # [plugins."@tayacrystals/shard-model-openaigeneric"]
 # apiKey = "\${OPENAI_API_KEY}"
