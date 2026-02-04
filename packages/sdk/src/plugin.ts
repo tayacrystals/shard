@@ -3,7 +3,7 @@ import type { ConfigManager } from "./config";
 import type { EventBus } from "./events";
 import type { MemoryService } from "./memory";
 
-export type PluginType = "channel" | "model" | "tool" | "memory" | "custom";
+export type PluginType = "channel" | "model" | "tool" | "memory" | "storage" | "custom";
 
 export interface PluginContext {
   config: ConfigManager;
