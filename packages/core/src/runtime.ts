@@ -114,6 +114,15 @@ export class Runtime {
 
     await this.registry.initAll(context);
 
+    // Use storage plugin if available, otherwise keep stub
+    const storagPlugins = this.registry.getStorage();
+    if (storagPlugins.length > 0) {
+      this.memory = storagPlugins[0];
+      this.log.info(`Using storage provider: ${storagPlugins[0].name}`);
+      // Update the context so other plugins see the real storage
+      context.memory = this.memory;
+    }
+
     // Wire up agent system
     const models = this.registry.getModels();
     const channels = this.registry.getChannels();

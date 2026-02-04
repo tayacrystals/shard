@@ -4,6 +4,7 @@ import type {
   Channel,
   ModelProvider,
   Tool,
+  StorageProvider,
   ConfigManager,
   Logger,
 } from "@tayacrystals/shard-sdk";
@@ -127,6 +128,10 @@ export class PluginRegistry {
 
   getTools(): Tool[] {
     return this.getByType<Tool>("tool");
+  }
+
+  getStorage(): StorageProvider[] {
+    return this.getByType<StorageProvider>("storage");
   }
 
   getPlugin(name: string): Plugin | undefined {
