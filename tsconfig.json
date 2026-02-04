@@ -18,7 +18,8 @@
       "@tayacrystals/shard": ["packages/core/src/index.ts"],
       "@tayacrystals/shard-model-openaigeneric": ["packages/model-openaigeneric/src/index.ts"],
       "@tayacrystals/shard-model-googleai": ["packages/model-googleai/src/index.ts"],
-      "@tayacrystals/shard-channel-telegram": ["packages/channel-telegram/src/index.ts"]
+      "@tayacrystals/shard-channel-telegram": ["packages/channel-telegram/src/index.ts"],
+      "@tayacrystals/shard-storage-files": ["packages/storage-files/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "**/dist"]

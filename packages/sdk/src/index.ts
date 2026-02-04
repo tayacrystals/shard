@@ -30,6 +30,7 @@ export type {
 } from "./model";
 export type { Artifact, ToolResult, ToolContext, Tool } from "./tool";
 export type { StorageProvider } from "./storage";
+export { defaultDataDir } from "./storage";
 export type {
   OrchestrationStrategy,
   DelegateTask,
